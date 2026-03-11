@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Retail Analytics Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="h-title">Online Retail Analytics</div>
+    <div class="h-sub">UCI Machine Learning Repository · UK Gift Retailer</div>
+  </div>
+</header>
+
+<div class="filter-bar">
+  <span class="filter-label">Filter</span>
+  <select id="f-country"><option value="all">All Countries</option></select>
+  <select id="f-month">
+    <option value="all">All Months</option>
+    <option value="2010-12">Dec 2010</option>
+    <option value="2011-01">Jan 2011</option><option value="2011-02">Feb 2011</option>
+    <option value="2011-03">Mar 2011</option><option value="2011-04">Apr 2011</option>
+    <option value="2011-05">May 2011</option><option value="2011-06">Jun 2011</option>
+    <option value="2011-07">Jul 2011</option><option value="2011-08">Aug 2011</option>
+    <option value="2011-09">Sep 2011</option><option value="2011-10">Oct 2011</option>
+    <option value="2011-11">Nov 2011</option><option value="2011-12">Dec 2011</option>
+  </select>
+  <div id="sel-info"></div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset All</button>
+</div>
+
+
+<div class="main-grid">
+  <div class="panel" id="p1">
+    <div class="ph">
+      <div><div class="pt">Revenue Over Time</div><div class="ps">Monthly totals · Drag to brush time window → filters Views 2 &amp; 3</div></div>
+      <span class="badge b1">VIEW 01</span>
+    </div>
+    <svg id="sv1"></svg>
+  </div>
+  <div class="bottom-row">
+    <div class="panel p2" id="p2">
+      <div class="ph">
+        <div><div class="pt">Revenue by Country</div><div class="ps">Click bar to cross-filter Views 1 &amp; 3</div></div>
+        <span class="badge b2">VIEW 02</span>
+      </div>
+      <svg id="sv2"></svg>
+    </div>
+    <div class="panel p3" id="p3">
+      <div class="ph">
+        <div><div class="pt">Product Performance</div><div class="ps">X=Quantity · Y=Revenue (log) · Size=UnitPrice · Color=Country</div></div>
+        <span class="badge b3">VIEW 03</span>
+      </div>
+      <svg id="sv3"></svg>
+      <div class="legend-wrap" id="leg3"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tt"><div class="tt-title" id="tt-t"></div><div id="tt-b"></div></div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
