@@ -102,8 +102,8 @@ cross_data = (
 )
 print(f"Cross-filter rows: {len(cross_data)}")
 
-# unique country list for dropdpwn
-all_countries = sorted(df['Country'].unique().tolist())
+# unique country list for dropdown, excluding "Unspecified"
+all_countries = sorted([c for c in df['Country'].unique().tolist() if c != 'Unspecified'])
 
 data = {
     'v1':          v1,           # 13 rows — monthly totals for line chart
