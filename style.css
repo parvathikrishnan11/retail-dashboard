@@ -1,44 +1,26 @@
 :root {
-  /* slide-like neutrals */
   --bg: #efeff2;
   --surface: #f7f7fa;
   --surface-strong: #ffffff;
-  --surface2: #ececf1;
   --border: #d5d7df;
 
-  /* text */
   --text: #32343c;
   --muted: #6f7384;
   --heading: #33439a;
 
-  /* lecture accent family */
   --blue: #157fbc;
-  --cyan: #1ab7c8;
-  --orange: #d86a05;
-  --purple: #7a37b2;
-  --coral: #ea3d57;
-  --green: #1c8c56;
+  --orange: #D95F02FF;
+  --purple: #7570B3FF;
+  --green: #1B9E77FF;
 
-  /* aliases */
   --accent: var(--blue);
   --accent2: var(--orange);
   --accent3: var(--purple);
 
-  /* tints */
   --blue-100: #dbeef7;
-  --cyan-100: #d9f3f5;
   --orange-100: #f9e6d3;
   --purple-100: #eadcf5;
-  --coral-100: #f9dbe1;
   --green-100: #dcefe4;
-
-  /* sequential blue for ordered values */
-  --seq-1: #dceaf6;
-  --seq-2: #bdd9ee;
-  --seq-3: #93bfe2;
-  --seq-4: #669fd2;
-  --seq-5: #377fbe;
-  --seq-6: #1f64a3;
 
   --shadow-soft: 0 2px 6px rgba(40, 48, 78, 0.08);
   --shadow-card: 0 4px 10px rgba(40, 48, 78, 0.10);
@@ -53,17 +35,18 @@
 }
 
 body {
+  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   font-size: 14px;
   line-height: 1.45;
-  min-height: 100vh;
 }
 
-/* header */
-
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,33 +54,21 @@ header {
   border-bottom: 1px solid var(--border);
   background: rgba(247, 247, 250, 0.92);
   backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo {
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .h-title {
+  color: var(--heading);
   font-family: "Patrick Hand", "Trebuchet MS", cursive;
   font-size: 30px;
   line-height: 1;
-  color: var(--heading);
   letter-spacing: 0.01em;
   font-weight: 400;
 }
 
 .h-sub,
 .h-author {
-  font-size: 12px;
   color: var(--muted);
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -105,35 +76,33 @@ header {
   margin-top: 4px;
 }
 
-/* filters */
-
 .filter-bar {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 14px;
   padding: 12px 28px;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  flex-wrap: wrap;
 }
 
 .filter-label {
-  font-size: 12px;
   color: var(--muted);
+  font-size: 12px;
   font-weight: 600;
 }
 
 select {
+  cursor: pointer;
+  outline: none;
   background: var(--surface-strong);
   border: 1px solid var(--border);
+  border-radius: var(--radius-ui);
+  box-shadow: var(--shadow-soft);
   color: var(--text);
   font-family: "Inter", sans-serif;
   font-size: 13px;
   padding: 8px 12px;
-  border-radius: var(--radius-ui);
-  cursor: pointer;
-  outline: none;
-  box-shadow: var(--shadow-soft);
 }
 
 select:focus {
@@ -143,114 +112,62 @@ select:focus {
 
 .reset-btn {
   margin-left: auto;
+  cursor: pointer;
+  transition: all 0.18s ease;
   background: var(--surface-strong);
   border: 1px solid var(--border);
+  border-radius: var(--radius-ui);
+  box-shadow: var(--shadow-soft);
   color: var(--muted);
   font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: 600;
   padding: 8px 13px;
-  border-radius: var(--radius-ui);
-  cursor: pointer;
-  transition: all 0.18s ease;
-  box-shadow: var(--shadow-soft);
 }
 
 .reset-btn:hover {
+  background: var(--blue-100);
   border-color: var(--accent);
   color: var(--accent);
-  background: var(--blue-100);
 }
 
 #sel-info {
-  font-family: "Inter", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--accent);
+  display: none;
   padding: 5px 11px;
   background: var(--blue-100);
   border: 1px solid rgba(21, 127, 188, 0.16);
   border-radius: 999px;
-  display: none;
+  color: var(--accent);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 #sel-info.show {
   display: block;
 }
 
-/* KPI */
-
-.kpi-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  padding: 18px 24px 0;
-  background: transparent;
-  border-bottom: none;
-}
-
-.kpi {
-  background: var(--surface-strong);
-  padding: 16px 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
-.kpi-label {
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.kpi-value {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-top: 4px;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
-.kv-green {
-  color: var(--green);
-}
-
-.kpi-sub {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-/* layout */
-
 .main-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
   padding: 18px 24px;
-  background: transparent;
 }
 
 .bottom-row {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 18px;
-  background: transparent;
 }
 
-/* cards */
-
 .panel {
-  background: var(--surface-strong);
-  padding: 22px 24px 18px;
   position: relative;
   overflow: hidden;
+  background: var(--surface-strong);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
+  padding: 22px 24px 18px;
 }
 
 .panel::before {
@@ -261,7 +178,7 @@ select:focus {
   width: 56px;
   height: 5px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--green);
 }
 
 .panel.p2::before {
@@ -281,58 +198,54 @@ select:focus {
 }
 
 .pt {
+  color: var(--heading);
   font-family: "Patrick Hand", "Trebuchet MS", cursive;
   font-size: 24px;
   line-height: 1;
-  color: var(--heading);
   font-weight: 400;
 }
 
 .ps {
-  font-size: 12px;
-  color: var(--muted);
   margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
   font-weight: 500;
 }
 
-/* badges */
-
 .badge {
+  padding: 5px 9px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
-  padding: 5px 9px;
-  border-radius: 999px;
-  border: 1px solid transparent;
 }
 
 .b1 {
-  background: var(--blue-100);
-  color: var(--accent);
-  border-color: rgba(21, 127, 188, 0.16);
+  background: var(--green-100);
+  border-color: rgba(27, 158, 119, 0.2);
+  color: var(--green);
 }
 
 .b2 {
   background: var(--orange-100);
-  color: var(--accent2);
   border-color: rgba(216, 106, 5, 0.18);
+  color: var(--accent2);
 }
 
 .b3 {
   background: var(--purple-100);
-  color: var(--accent3);
   border-color: rgba(122, 55, 178, 0.18);
+  color: var(--accent3);
 }
 
 svg {
   display: block;
 }
 
-/* axes */
-
 .axis text {
+  fill: var(--muted);
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
-  fill: var(--muted);
 }
 
 .axis path,
@@ -340,23 +253,16 @@ svg {
   stroke: #c6cad6;
 }
 
-.axis .domain {
+.axis .domain,
+.grid path {
   display: none;
 }
-
-/* grid */
 
 .grid line {
   stroke: #dde1ea;
   stroke-dasharray: 2, 4;
   opacity: 1;
 }
-
-.grid path {
-  display: none;
-}
-
-/* legends */
 
 .legend-wrap {
   display: flex;
@@ -371,10 +277,10 @@ svg {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 12px;
-  color: var(--muted);
   cursor: pointer;
   transition: color 0.18s ease;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .leg-item:hover {
@@ -384,37 +290,26 @@ svg {
 .leg-dot {
   width: 10px;
   height: 10px;
-  border-radius: 999px;
   flex-shrink: 0;
+  border-radius: 999px;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
-/* categorical legend helpers */
-
-.leg-dot.cat-1 { background: var(--blue); }
-.leg-dot.cat-2 { background: var(--cyan); }
-.leg-dot.cat-3 { background: var(--orange); }
-.leg-dot.cat-4 { background: var(--purple); }
-.leg-dot.cat-5 { background: var(--coral); }
-.leg-dot.cat-6 { background: var(--green); }
-
-/* tooltip */
-
 #tt {
   position: fixed;
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 12px 14px;
-  font-family: "Inter", sans-serif;
-  font-size: 13px;
-  color: var(--text);
+  z-index: 999;
+  max-width: 260px;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s;
-  z-index: 999;
-  max-width: 260px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 14px;
   box-shadow: 0 12px 26px rgba(40, 48, 78, 0.14);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  padding: 12px 14px;
 }
 
 #tt.show {
@@ -422,11 +317,11 @@ svg {
 }
 
 .tt-title {
+  margin-bottom: 8px;
+  color: var(--heading);
   font-family: "Patrick Hand", "Trebuchet MS", cursive;
   font-size: 20px;
   line-height: 1;
-  color: var(--heading);
-  margin-bottom: 8px;
   font-weight: 400;
 }
 
@@ -434,8 +329,8 @@ svg {
   display: flex;
   justify-content: space-between;
   gap: 14px;
-  line-height: 1.7;
   font-size: 12px;
+  line-height: 1.7;
 }
 
 .tt-k {
@@ -448,32 +343,9 @@ svg {
   font-weight: 500;
 }
 
-/* chart utility classes */
-
-/* categorical */
-.series-cat-1 { stroke: var(--blue); fill: var(--blue); }
-.series-cat-2 { stroke: var(--cyan); fill: var(--cyan); }
-.series-cat-3 { stroke: var(--orange); fill: var(--orange); }
-.series-cat-4 { stroke: var(--purple); fill: var(--purple); }
-.series-cat-5 { stroke: var(--coral); fill: var(--coral); }
-.series-cat-6 { stroke: var(--green); fill: var(--green); }
-
-/* sequential */
-.series-seq-1 { stroke: var(--seq-1); fill: var(--seq-1); }
-.series-seq-2 { stroke: var(--seq-2); fill: var(--seq-2); }
-.series-seq-3 { stroke: var(--seq-3); fill: var(--seq-3); }
-.series-seq-4 { stroke: var(--seq-4); fill: var(--seq-4); }
-.series-seq-5 { stroke: var(--seq-5); fill: var(--seq-5); }
-.series-seq-6 { stroke: var(--seq-6); fill: var(--seq-6); }
-
-/* responsive */
 @media (max-width: 1100px) {
   .bottom-row {
     grid-template-columns: 1fr;
-  }
-
-  .kpi-strip {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -486,12 +358,6 @@ svg {
   .main-grid {
     padding-left: 18px;
     padding-right: 18px;
-  }
-
-  .kpi-strip {
-    padding-left: 18px;
-    padding-right: 18px;
-    grid-template-columns: 1fr;
   }
 
   .h-title {
