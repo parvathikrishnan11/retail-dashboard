@@ -6,12 +6,12 @@
 <title>Online Retail Analytics Dashboard</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
 
+<!--Top header to show the title and subtitle-->
+<body>
 <header>
   <div>
     <div class="h-title">Online Retail Analytics</div>
@@ -20,30 +20,53 @@
   <div class="h-author">Parvathi Krishnan</div>
 </header>
 
+<!--Filter with dropdowns for country and month and a reset button-->
 <div class="filter-bar">
+  <span class="filter-label">Country</span>
+  <select id="f-country"><option value="all">All Countries</option></select>
+  <span class="filter-label">Month</span>
+
+  <select id="f-month">
+    <option value="all">All Months</option>
+    <option value="2010-12">Dec 2010</option>
+    <option value="2011-01">Jan 2011</option>
+    <option value="2011-02">Feb 2011</option>
+    <option value="2011-03">Mar 2011</option>
+    <option value="2011-04">Apr 2011</option>
+    <option value="2011-05">May 2011</option>
+    <option value="2011-06">Jun 2011</option>
+    <option value="2011-07">Jul 2011</option>
+    <option value="2011-08">Aug 2011</option>
+    <option value="2011-09">Sep 2011</option>
+    <option value="2011-10">Oct 2011</option>
+    <option value="2011-11">Nov 2011</option>
+    <option value="2011-12">Dec 2011</option>
+  </select>
+  <span id="sel-info"></span>
   <button class="reset-btn" onclick="resetAll()">↺ Reset All</button>
 </div>
 
+<!--Main grid for the panels-->
 <div class="main-grid">
   <div class="panel" id="p1">
     <div class="ph">
-      <div><div class="pt">Revenue Over Time</div><div class="ps">Monthly totals · Drag to brush time window → filters Views 2 &amp; 3</div></div>
-      <span class="badge b1">VIEW 01</span>
+      <div><div class="pt">Revenue Over Time</div><div class="ps">Monthly totals · Drag to brush time window </div></div>
+      <span class="badge b1">VIEW 1</span>
     </div>
     <svg id="sv1"></svg>
   </div>
   <div class="bottom-row">
     <div class="panel p2" id="p2">
       <div class="ph">
-        <div><div class="pt">Revenue by Country</div><div class="ps">Click bar to cross-filter Views 1 &amp; 3</div></div>
-        <span class="badge b2">VIEW 02</span>
+        <div><div class="pt">Revenue by Country</div><div class="ps">Click bar to cross-filter</div></div>
+        <span class="badge b2">VIEW 2</span>
       </div>
       <svg id="sv2"></svg>
     </div>
     <div class="panel p3" id="p3">
       <div class="ph">
-        <div><div class="pt">Product Performance</div><div class="ps">X=Quantity · Y=Revenue (log) · Size=UnitPrice · Color=Country</div></div>
-        <span class="badge b3">VIEW 03</span>
+        <div><div class="pt">Product Performance</div><div class="ps">X=Quantity · Y=Revenue (log) · Size=UnitPrice · Color=Country · Click bubble to filter </div></div>
+        <span class="badge b3">VIEW 3</span>
       </div>
       <svg id="sv3"></svg>
       <div class="legend-wrap" id="leg3"></div>
