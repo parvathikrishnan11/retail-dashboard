@@ -182,7 +182,6 @@ function filteredV1WithDropdowns() {
   return D.crossFilter.filter(d => {
     if (S.cFilter !== 'all' && d.country !== S.cFilter) return false;
     if (S.country && countryGroup(d.country) !== S.country) return false;
-    if (S.mFilter !== 'all' && monthKey(d.date) !== S.mFilter) return false;
     return true;
   });
 }
